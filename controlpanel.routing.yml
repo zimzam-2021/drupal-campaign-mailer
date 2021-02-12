@@ -1,0 +1,235 @@
+home_router:
+  path: '/home'
+  defaults:
+    _title: 'Welcome to Control Panel'
+    _controller: '\Drupal\controlpanel\Controller\Home::homeRouter'
+  requirements:
+    _role:  'authenticated'
+  options:
+    no_cache: 'TRUE'
+
+insider.home:
+  path: '/home/insider'
+  defaults:
+    _title: 'Insider Home'
+    _controller: '\Drupal\controlpanel\Controller\InsiderStatus::InsiderStatusHome'
+  requirements:
+    _role:  'authenticated'
+  options:
+    no_cache: 'TRUE'
+
+test_router:
+  path: '/test'
+  defaults:
+    _controller: '\Drupal\controlpanel\Controller\Home::testGround'
+  requirements:
+    _role:  'authenticated'
+  options:
+    no_cache: 'TRUE'
+
+cron_path:
+  path: '/cron-settings'
+  defaults:
+    _title: 'Cron Email Runner'
+    _controller: '\Drupal\controlpanel\Controller\Home::emailCron'
+  requirements:
+    _custom_access:  '\Drupal\controlpanel\Controller\Home::accessTrue'
+  options:
+    no_cache: 'TRUE'
+
+cron_path_5_minutes:
+  path: '/cron-settings-5-min'
+  defaults:
+    _title: 'Cron Email Runner - Every 5 Minutes'
+    _controller: '\Drupal\controlpanel\Controller\Home::cronEvery5Minutes'
+  requirements:
+    _custom_access:  '\Drupal\controlpanel\Controller\Home::accessTrue'
+  options:
+    no_cache: 'TRUE'
+
+cron_path_10_minutes:
+  path: '/cron-settings-10-min'
+  defaults:
+    _title: 'Cron Email Runner - Every 10 Minutes'
+    _controller: '\Drupal\controlpanel\Controller\Home::cronEvery10Minutes'
+  requirements:
+    _custom_access:  '\Drupal\controlpanel\Controller\Home::accessTrue'
+  options:
+    no_cache: 'TRUE'
+
+cron_path_15_minutes:
+  path: '/cron-settings-15-min'
+  defaults:
+    _title: 'Cron Email Runner - Every 15 Minutes'
+    _controller: '\Drupal\controlpanel\Controller\Home::cronEvery15Minutes'
+  requirements:
+    _custom_access:  '\Drupal\controlpanel\Controller\Home::accessTrue'
+  options:
+    no_cache: 'TRUE'
+
+cron_path_30_minutes:
+  path: '/cron-settings-30-min'
+  defaults:
+    _title: 'Cron Email Runner - Every 30 Minutes'
+    _controller: '\Drupal\controlpanel\Controller\Home::cronEvery30Minutes'
+  requirements:
+    _custom_access:  '\Drupal\controlpanel\Controller\Home::accessTrue'
+  options:
+    no_cache: 'TRUE'
+
+tracking_image_path:
+  path: '/pixie/{image}'
+  defaults:
+    _title: 'Mail'
+    _controller: '\Drupal\controlpanel\Controller\Home::imagePixie'
+  requirements:
+    _custom_access:  '\Drupal\controlpanel\Controller\Home::accessTrue'
+  options:
+    no_cache: 'TRUE'
+
+email.test.form:
+  path: '/email/accounts/test'
+  defaults:
+    _title: 'Email Account Testing Form'
+    _form: '\Drupal\controlpanel\Form\EmailTester'
+  requirements:
+    _role:  'authenticated'
+
+yahoo.safemail:
+  path: '/mail/yahoo/safe'
+  defaults:
+    _title: 'Yahoo Safe Mailing Form'
+    _controller: '\Drupal\controlpanel\Controller\YahooEmailSafer::sendSafeMessageFromYahoo'
+  requirements:
+    _custom_access:  '\Drupal\controlpanel\Controller\Home::accessTrue'
+  options:
+    no_cache: 'TRUE'
+
+yahoo.availablemail:
+  path: '/mail/yahoo/available'
+  defaults:
+    _title: 'Yahoo Available Email Account'
+    _controller: '\Drupal\controlpanel\Controller\YahooEmailSafer::availableYahooEmailAccounts'
+  requirements:
+    _custom_access:  '\Drupal\controlpanel\Controller\Home::accessTrue'
+  options:
+    no_cache: 'TRUE'
+
+imap.mail.reader:
+  path: '/imap/reader'
+  defaults:
+    _title: 'Email IMAP Reader'
+    _controller: '\Drupal\controlpanel\Controller\EmailReader::imapEmailReader'
+  requirements:
+    _custom_access:  '\Drupal\controlpanel\Controller\Home::accessTrue'
+  options:
+    no_cache: 'TRUE'
+
+imap.mail.reply:
+  path: '/imap/reply'
+  defaults:
+    _title: 'Email IMAP Sender'
+    _controller: '\Drupal\controlpanel\Controller\EmailReader::imapReply'
+  requirements:
+    _custom_access:  '\Drupal\controlpanel\Controller\Home::accessTrue'
+  options:
+    no_cache: 'TRUE'
+
+email.message.builder:
+  path: '/mail/message/builder'
+  defaults:
+    _title: 'Message Builder'
+    _controller: '\Drupal\controlpanel\Controller\MessageBuilder::messageBuilder'
+  requirements:
+    _custom_access:  '\Drupal\controlpanel\Controller\Home::accessTrue'
+  options:
+    no_cache: 'TRUE'
+
+did.call.status:
+  path: '/did/call/stat/{campaign_id}'
+  defaults:
+    _controller: '\Drupal\controlpanel\Controller\DIDCallStatus::DIDCallStatusHome'
+  requirements:
+    _role:  'authenticated'
+  options:
+    no_cache: 'TRUE'
+
+did.call.status.live:
+  path: '/did/call/stat/{campaign_id}/live'
+  defaults:
+    _controller: '\Drupal\controlpanel\Controller\DIDCallStatus::DIDCallStatusHomeLive'
+  requirements:
+    _role:  'authenticated'
+  options:
+    no_cache: 'TRUE'
+  
+did.call.status.live.filter:
+  path: '/did/call/stat/{campaign_id}/filter/{start_date}/{end_date}'
+  defaults:
+    _controller: '\Drupal\controlpanel\Controller\DIDCallStatus::DIDCallStatusHomeLiveFilter'
+  requirements:
+    _role:  'authenticated'
+  options:
+    no_cache: 'TRUE'
+
+did.call.status.live.api:
+  path: '/did/call/api/all'
+  defaults:
+    _controller: '\Drupal\controlpanel\Controller\DIDCallStatus::DIDCallStatusHomeAll'
+  requirements:
+    _custom_access:  '\Drupal\controlpanel\Controller\Home::accessTrue'
+  options:
+    no_cache: 'TRUE'
+
+campaign.email.api.cron:
+  path: '/campaign/email/api/cron'
+  defaults:
+    _controller: 'Drupal\controlpanel\Controller\Campaign\Email\API::CampaignEmailAPICron'
+  requirements:
+    _custom_access:  '\Drupal\controlpanel\Controller\Home::accessTrue'
+  options:
+    no_cache: 'TRUE'
+
+campaign.email.api.unsubscribe:
+  path: '/campaign/email/api/unsubscribe/{domain}/{emailId}/{messageId}'
+  defaults:
+    _controller: 'Drupal\controlpanel\Controller\Campaign\Email\API::unSubscribeEmail'
+  requirements:
+    _custom_access:  '\Drupal\controlpanel\Controller\Home::accessTrue'
+  options:
+    no_cache: 'TRUE'
+
+campaign.email.api.test:
+  path: '/campaign/email/api/test/{campaignId}/{dummy}'
+  defaults:
+    _controller: 'Drupal\controlpanel\Controller\Campaign\Email\API::CampaignEmailAPITest'
+  requirements:
+    _custom_access:  '\Drupal\controlpanel\Controller\Home::accessTrue'
+  options:
+    no_cache: 'TRUE'
+
+campaign.email.api.test.dummy:
+  path: '/campaign/email/api/test/{campaignId}'
+  defaults:
+    _controller: 'Drupal\controlpanel\Controller\Campaign\Email\API::CampaignEmailAPITest'
+  requirements:
+    _custom_access:  '\Drupal\controlpanel\Controller\Home::accessTrue'
+  options:
+    no_cache: 'TRUE'
+
+campaign.mailgun.api.events:
+  path: '/campaign/mailgun/api/events'
+  defaults:
+    _controller: 'Drupal\controlpanel\Controller\Campaign\Mailgun\MgAPI::mailgunEventsAPI'
+  requirements:
+    _custom_access:  '\Drupal\controlpanel\Controller\Home::accessTrue'
+  options:
+    no_cache: 'TRUE'
+
+campaign.time.settings.form:
+  path: '/campaign/time/settings'
+  defaults:
+    _title: 'Campaign Time Settings'
+    _form: '\Drupal\controlpanel\Form\Campaign\TimeSettings'
+  requirements:
+    _role:  'authenticated'

@@ -1,0 +1,5 @@
+name: Control Panel
+description: Control Panel Module
+
+type: module
+core_version_requirement: 9.x
